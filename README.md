@@ -45,6 +45,7 @@ Open [http://127.0.0.1:3200](http://127.0.0.1:3200) locally, or **https://oya.se
 - [SECURITY.md](./SECURITY.md) — Security model
 - [ADMIN_GUIDE.md](./ADMIN_GUIDE.md) — Admin workflows
 - [UAT_REPORT_TEMPLATE.md](./UAT_REPORT_TEMPLATE.md) — UAT checklist
+- [docs/UAT_REPORT.md](docs/UAT_REPORT.md) — **Signed-off UAT report (production)**
 
 ## Tech Stack
 

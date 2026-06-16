@@ -149,15 +149,17 @@ cp .env.example .env.local
 
 | Step | Done |
 |------|------|
-| Supabase project created | ☐ |
-| Migration SQL executed | ☐ |
-| Supabase Site URL = `https://oya.securemineidentity.com` | ☐ |
-| Admin user created + `bootstrap-admin` run | ☐ |
-| Upstash Redis created | ☐ |
-| Vercel project deployed with all env vars | ☐ |
-| Domain `oya.securemineidentity.com` added in Vercel + DNS | ☐ |
-| Login at `/admin/login` works | ☐ |
-| Public verify at `/` works | ☐ |
+| Supabase project created | ✅ |
+| Migration SQL executed | ✅ |
+| Supabase Site URL = `https://oya.securemineidentity.com` | ✅ |
+| Admin user created + `bootstrap-admin` run | ✅ |
+| Upstash Redis created | ✅ |
+| Vercel project deployed with all env vars | ✅ |
+| Domain `oya.securemineidentity.com` added in Vercel + DNS | ✅ |
+| Login at `/admin/login` works | ✅ |
+| Public verify at `/` works | ✅ |
+| UAT signed off | ✅ — see [docs/UAT_REPORT.md](docs/UAT_REPORT.md) |
+| Production record loaded | ✅ — `SMI-VR-2026-001` |
 
 ---
 

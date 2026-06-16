@@ -10,6 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:e2e:prod": "playwright test --config=playwright.production.config.ts",
+    "finalize-production": "node scripts/run-production-uat.mjs",
     "bootstrap-admin": "node scripts/bootstrap-admin.mjs"
   },
   "dependencies": {
