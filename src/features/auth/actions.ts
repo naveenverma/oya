@@ -6,11 +6,11 @@ import { loginSchema, type LoginFormValues } from "@/lib/validation/schemas";
 
 export type LoginState = {
   error?: string;
-  success?: boolean;
 };
 
 export async function loginAction(
   values: LoginFormValues,
+  redirectTo = "/admin",
 ): Promise<LoginState> {
   const parsed = loginSchema.safeParse(values);
   if (!parsed.success) {
@@ -27,7 +27,12 @@ export async function loginAction(
     return { error: "Invalid email or password" };
   }
 
-  return { success: true };
+  const destination =
+    redirectTo.startsWith("/admin") && !redirectTo.startsWith("//")
+      ? redirectTo
+      : "/admin";
+
+  redirect(destination);
 }
 
 export async function logoutAction(): Promise<void> {

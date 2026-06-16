@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginFormValues } from "@/lib/validation/schemas";
@@ -18,28 +18,24 @@ import {
 } from "@/components/ui/card";
 
 export function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [error, setError] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
   });
 
   const onSubmit = async (values: LoginFormValues) => {
     setError(null);
-    const result = await loginAction(values);
+    const redirectTo = searchParams.get("redirect") ?? "/admin";
+    const result = await loginAction(values, redirectTo);
     if (result.error) {
       setError(result.error);
-      return;
     }
-    const redirect = searchParams.get("redirect") ?? "/admin";
-    router.push(redirect);
-    router.refresh();
   };
 
   return (
@@ -58,8 +54,14 @@ export function LoginForm() {
               id="email"
               type="email"
               autoComplete="email"
+              aria-invalid={Boolean(errors.email)}
               {...register("email")}
             />
+            {errors.email && (
+              <p className="text-sm text-destructive" role="alert">
+                {errors.email.message}
+              </p>
+            )}
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
@@ -67,8 +69,14 @@ export function LoginForm() {
               id="password"
               type="password"
               autoComplete="current-password"
+              aria-invalid={Boolean(errors.password)}
               {...register("password")}
             />
+            {errors.password && (
+              <p className="text-sm text-destructive" role="alert">
+                {errors.password.message}
+              </p>
+            )}
           </div>
           {error && (
             <p className="text-sm text-destructive" role="alert">
