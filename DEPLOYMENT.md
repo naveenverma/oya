@@ -1,14 +1,20 @@
 # Deployment Guide
 
-**Production URL:** https://oya.securemineidentity.com
+**Production URL:** https://oya.securemineidentity.com  
+**Vercel project:** [oya](https://vercel.com/naveen-vermas-projects-c6ddebdc/oya) — see [docs/vercel-project.md](docs/vercel-project.md)
 
 For step-by-step instructions on where to obtain every API key, see **[KEYS.md](./KEYS.md)**.
 
-## Vercel
+## Vercel (connected)
 
-1. Import the repository into [Vercel](https://vercel.com)
-2. Framework preset: **Next.js**
-3. Set environment variables (Production) — copy from [`.env.production.example`](.env.production.example):
+| Field | Value |
+|-------|-------|
+| Project ID | `prj_R7Of8n5lgC3TZrD9HT9CXOkJMtTX` |
+| Team ID | `team_uGKDBk7LvyVB8QKOJaONUdmV` |
+| Live preview | https://oya-gold.vercel.app |
+| Git | `naveenverma/oya` → auto-deploy on `main` |
+
+Set environment variables in [Vercel → Settings → Environment Variables](https://vercel.com/naveen-vermas-projects-c6ddebdc/oya/settings/environment-variables):
 
 | Variable | Required | Value (production) |
 |----------|----------|-------------------|

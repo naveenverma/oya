@@ -16,6 +16,18 @@ npm install
 
 ## 2. Create Supabase project
 
+**This repo uses the existing project `oya`:**
+
+| Field | Value |
+|-------|-------|
+| Project ID | `qsmdibxjzifcpyqnueuo` |
+| API URL | https://qsmdibxjzifcpyqnueuo.supabase.co |
+| Dashboard | https://supabase.com/dashboard/project/qsmdibxjzifcpyqnueuo |
+
+See [docs/supabase-project.md](docs/supabase-project.md) for MCP details.
+
+If setting up from scratch elsewhere:
+
 1. Create a new project at [supabase.com](https://supabase.com)
 2. Note the project URL and anon key
 3. Copy the service role key (Settings → API) — **never expose client-side**

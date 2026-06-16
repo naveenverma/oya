@@ -6,122 +6,135 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
-export interface Database {
+export type Database = {
+  __InternalSupabase: {
+    PostgrestVersion: "14.5";
+  };
   public: {
     Tables: {
+      audit_logs: {
+        Row: {
+          action: Database["public"]["Enums"]["audit_action"];
+          id: string;
+          metadata: Json | null;
+          record_id: string | null;
+          timestamp: string;
+          user_id: string;
+        };
+        Insert: {
+          action: Database["public"]["Enums"]["audit_action"];
+          id?: string;
+          metadata?: Json | null;
+          record_id?: string | null;
+          timestamp?: string;
+          user_id: string;
+        };
+        Update: {
+          action?: Database["public"]["Enums"]["audit_action"];
+          id?: string;
+          metadata?: Json | null;
+          record_id?: string | null;
+          timestamp?: string;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "audit_logs_record_id_fkey";
+            columns: ["record_id"];
+            isOneToOne: false;
+            referencedRelation: "registry_records";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       registry_records: {
         Row: {
-          id: string;
-          control_number: string;
-          record_name: string | null;
-          organization: string | null;
-          record_type: string | null;
-          category: string | null;
-          status: string;
-          issue_date: string | null;
-          expiration_date: string | null;
-          verification_status: string | null;
-          description: string | null;
-          country: string | null;
-          region: string | null;
-          reference_number: string | null;
-          contact_information: string | null;
-          notes: string | null;
           attachment_1: string | null;
           attachment_2: string | null;
           attachment_3: string | null;
-          created_at: string;
-          updated_at: string;
-          created_by: string | null;
-        };
-        Insert: {
-          id?: string;
+          category: string | null;
+          contact_information: string | null;
           control_number: string;
-          record_name?: string | null;
-          organization?: string | null;
-          record_type?: string | null;
-          category?: string | null;
-          status?: string;
-          issue_date?: string | null;
-          expiration_date?: string | null;
-          verification_status?: string | null;
-          description?: string | null;
-          country?: string | null;
-          region?: string | null;
-          reference_number?: string | null;
-          contact_information?: string | null;
-          notes?: string | null;
-          attachment_1?: string | null;
-          attachment_2?: string | null;
-          attachment_3?: string | null;
-          created_at?: string;
-          updated_at?: string;
-          created_by?: string | null;
-        };
-        Update: {
-          id?: string;
-          control_number?: string;
-          record_name?: string | null;
-          organization?: string | null;
-          record_type?: string | null;
-          category?: string | null;
-          status?: string;
-          issue_date?: string | null;
-          expiration_date?: string | null;
-          verification_status?: string | null;
-          description?: string | null;
-          country?: string | null;
-          region?: string | null;
-          reference_number?: string | null;
-          contact_information?: string | null;
-          notes?: string | null;
-          attachment_1?: string | null;
-          attachment_2?: string | null;
-          attachment_3?: string | null;
-          created_at?: string;
-          updated_at?: string;
-          created_by?: string | null;
-        };
-        Relationships: [];
-      };
-      audit_logs: {
-        Row: {
+          country: string | null;
+          created_at: string;
+          created_by: string | null;
+          description: string | null;
+          expiration_date: string | null;
           id: string;
-          action: string;
-          record_id: string | null;
-          user_id: string;
-          timestamp: string;
-          metadata: Json | null;
+          issue_date: string | null;
+          notes: string | null;
+          organization: string | null;
+          record_name: string | null;
+          record_type: string | null;
+          reference_number: string | null;
+          region: string | null;
+          status: Database["public"]["Enums"]["record_status"];
+          updated_at: string;
+          verification_status: string | null;
         };
         Insert: {
+          attachment_1?: string | null;
+          attachment_2?: string | null;
+          attachment_3?: string | null;
+          category?: string | null;
+          contact_information?: string | null;
+          control_number: string;
+          country?: string | null;
+          created_at?: string;
+          created_by?: string | null;
+          description?: string | null;
+          expiration_date?: string | null;
           id?: string;
-          action: string;
-          record_id?: string | null;
-          user_id: string;
-          timestamp?: string;
-          metadata?: Json | null;
+          issue_date?: string | null;
+          notes?: string | null;
+          organization?: string | null;
+          record_name?: string | null;
+          record_type?: string | null;
+          reference_number?: string | null;
+          region?: string | null;
+          status?: Database["public"]["Enums"]["record_status"];
+          updated_at?: string;
+          verification_status?: string | null;
         };
         Update: {
+          attachment_1?: string | null;
+          attachment_2?: string | null;
+          attachment_3?: string | null;
+          category?: string | null;
+          contact_information?: string | null;
+          control_number?: string;
+          country?: string | null;
+          created_at?: string;
+          created_by?: string | null;
+          description?: string | null;
+          expiration_date?: string | null;
           id?: string;
-          action?: string;
-          record_id?: string | null;
-          user_id?: string;
-          timestamp?: string;
-          metadata?: Json | null;
+          issue_date?: string | null;
+          notes?: string | null;
+          organization?: string | null;
+          record_name?: string | null;
+          record_type?: string | null;
+          reference_number?: string | null;
+          region?: string | null;
+          status?: Database["public"]["Enums"]["record_status"];
+          updated_at?: string;
+          verification_status?: string | null;
         };
         Relationships: [];
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      is_super_admin: { Args: Record<string, never>; Returns: boolean };
+    };
     Enums: {
-      record_status: "draft" | "pending_review" | "approved" | "archived";
       audit_action:
         | "record_created"
         | "record_updated"
         | "record_deleted"
         | "status_changed";
+      record_status: "draft" | "pending_review" | "approved" | "archived";
     };
     CompositeTypes: Record<string, never>;
   };
-}
+};

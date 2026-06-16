@@ -36,6 +36,8 @@ Open [http://127.0.0.1:3200](http://127.0.0.1:3200) locally, or **https://oya.se
 
 ## Documentation
 
+- [docs/vercel-project.md](docs/vercel-project.md) — **Vercel project IDs and env vars**
+- [docs/supabase-project.md](docs/supabase-project.md) — Supabase project `oya`
 - [KEYS.md](./KEYS.md) — **Where to get every API key**
 - [INSTALL.md](./INSTALL.md) — Local setup
 - [DEPLOYMENT.md](./DEPLOYMENT.md) — Vercel deployment
